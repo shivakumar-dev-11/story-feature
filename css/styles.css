@@ -1,0 +1,245 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: #0a0a0a;
+  color: #f5f5f5;
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 2rem;
+}
+
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.tray {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.story-tray {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.tray__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.story-circle {
+  flex-shrink: 0;
+}
+
+.tray__label {
+  font-size: 0.75rem;
+  color: #a8a8a8;
+  max-width: 4.5rem;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.story-ring {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Fixed square hit area so the gradient ring stays a perfect circle */
+.story-ring--story,
+.story-ring--add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.story-ring--add .story-ring__inner--add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  border: 2px dashed #404040;
+}
+
+.story-ring__plus {
+  font-size: 1.75rem;
+  line-height: 1;
+  color: #f5f5f5;
+}
+
+.story-ring--story.ring-unseen {
+  padding: 3px;
+  background: linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888
+  );
+}
+
+.story-ring--story.ring-seen {
+  padding: 3px;
+  background: #404040;
+}
+
+.story-ring__inner {
+  display: block;
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  min-height: 64px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #0a0a0a;
+  background: #000;
+}
+
+.story-ring__thumb {
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 50%;
+}
+
+.upload-error {
+  margin: 0.75rem 0 0;
+  font-size: 0.875rem;
+  color: #f87171;
+}
+
+.hint {
+  margin: 1.5rem 0 0;
+  font-size: 0.875rem;
+  color: #737373;
+  line-height: 1.5;
+}
+
+.viewer-root[hidden] {
+  display: none !important;
+}
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+.viewer__chrome {
+  position: relative;
+  z-index: 2;
+  padding: 0.75rem 0.75rem 0.5rem;
+  padding-top: max(0.75rem, env(safe-area-inset-top));
+}
+
+.viewer__progress {
+  display: flex;
+  gap: 3px;
+  width: 100%;
+}
+
+.progress-segment {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.35);
+  overflow: hidden;
+}
+
+.progress-segment__fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.progress-segment.is-complete .progress-segment__fill {
+  width: 100%;
+}
+
+.viewer__close {
+  position: absolute;
+  top: max(0.5rem, env(safe-area-inset-top));
+  right: 0.75rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.viewer__frame {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  cursor: pointer;
+}
+
+.viewer__media {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+body.viewer-open {
+  overflow: hidden;
+}

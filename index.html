@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stories</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <h1 class="header__title">Stories</h1>
+      </header>
+
+      <section class="tray" aria-label="Your stories">
+        <div class="tray__item">
+          <button
+            type="button"
+            class="story-ring story-ring--add"
+            id="btn-add-story"
+            aria-label="Add story"
+          >
+            <span class="story-ring__inner story-ring__inner--add">
+              <span class="story-ring__plus" aria-hidden="true">+</span>
+            </span>
+          </button>
+          <span class="tray__label">Add story</span>
+        </div>
+
+        <div id="story-tray" class="story-tray"></div>
+      </section>
+
+      <p class="upload-error" id="upload-error" hidden></p>
+      <p class="hint" id="hint-empty">
+        Tap + to upload an image. Tap a story ring to watch from that story.
+      </p>
+    </div>
+
+    <input type="file" id="file-input" accept="image/*" hidden />
+
+    <div
+      id="viewer"
+      class="viewer-root"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Story viewer"
+      hidden
+    >
+      <div id="viewer-backdrop" class="viewer">
+        <div class="viewer__chrome">
+          <div id="progress-segments" class="viewer__progress"></div>
+          <button
+            type="button"
+            class="viewer__close"
+            id="viewer-close"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+        <div id="viewer-frame" class="viewer__frame">
+          <img class="viewer__media" id="viewer-image" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
